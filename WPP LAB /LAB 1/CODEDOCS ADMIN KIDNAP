@@ -1,0 +1,36 @@
+# Function to determine the final position of the coin
+def find_coin_position(T, test_cases):
+    results = []
+    for t in range(T):
+        N, X, S = test_cases[t][0]  # N: Number of boxes, X: Initial position, S: Number of swaps
+        swaps = test_cases[t][1]   # List of swap operations
+        
+        current_position = X
+        for A, B in swaps:
+            # Swap the boxes if one of them contains the coin
+            if current_position == A:
+                current_position = B
+            elif current_position == B:
+                current_position = A
+        
+        results.append(current_position)
+    
+    return results
+
+# Input
+T = int(input("Enter number of test cases: "))
+test_cases = []
+
+for _ in range(T):
+    # Read N, X, S
+    N, X, S = map(int, input("Enter N, X, S: ").split())
+    
+    # Read S swaps
+    swaps = [tuple(map(int, input("Enter A, B for swap: ").split())) for _ in range(S)]
+    
+    test_cases.append(((N, X, S), swaps))
+
+# Output
+results = find_coin_position(T, test_cases)
+for result in results:
+    print(result)

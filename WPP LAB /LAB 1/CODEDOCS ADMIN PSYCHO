@@ -1,0 +1,29 @@
+
+def minimum_swaps_to_sort(arr):
+    n = len(arr)
+    swaps = 0
+    sorted_arr = sorted(arr)  # Sort the array to get the target order
+    index_map = {value: idx for idx, value in enumerate(arr)}  # Map value to its index
+
+    for i in range(n):
+        # If the current element is already in the correct position, skip it
+        while arr[i] != sorted_arr[i]:
+            swaps += 1
+            correct_value = sorted_arr[i]
+
+            # Swap the current element with its correct position
+            to_swap_index = index_map[correct_value]
+            arr[i], arr[to_swap_index] = arr[to_swap_index], arr[i]
+
+            # Update the index_map after the swap
+            index_map[arr[to_swap_index]] = to_swap_index
+            index_map[arr[i]] = i
+
+    return swaps
+
+# Input
+n = int(input("Enter the number of team members: "))
+arr = list(map(int, input("Enter the heights of team members: ").split()))
+
+# Output
+print(minimum_swaps_to_sort(arr))
