@@ -1,0 +1,35 @@
+"""Create the following lists using a for loop. 
+(a) A list consisting of the integers 0 through 49  
+(b) A list containing the squares of the integers 1 through 50.  
+(c) The list ['a','bb','ccc','dddd', ...] that ends with 26 copies of the letter z. 
+
+"""""
+
+
+# CREATING THE LISTS USING THE LOOPS.
+
+# PART 1- A LIST CONSISTING OF THE INTEGERS O THROUGH 49.
+a = []
+for i in  range (50):
+    a.append(i)
+    print(a[i])  
+
+
+# PART 2- A LIST CONTAINING THE SQUARES OF THE INTEGERS 1 THROUGH 50.
+b = []
+for i in range (1, 51):
+    b.append(i**2)
+    print(b[i])
+
+
+# PART 3
+c = []
+for i in range (1, 26):
+    c.append(chr (ord('a') + i-1 ) *i)
+    print(c[i])
+
+
+
+
+  
+
